@@ -1,6 +1,6 @@
 # Meetup Azure Governance
 
-Hands-on stuff for Dutch Azure Meetup on Governance.
+Unfinished work -- Hands-on stuff for Dutch Azure Meetup on Governance.
 
 ## Tools
 
