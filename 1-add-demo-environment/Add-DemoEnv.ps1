@@ -20,7 +20,7 @@ $sku = "Standard_LRS"
 $kind = "StorageV2"
 $accessTier = "Hot"
 # Storage account names must be globally unique, so infuse a random id
-$randomId = Get-Random -Minimum -10000 -Maximum 99999
+$randomId = Get-Random -Minimum 10000 -Maximum 99999
 
 $args = @{
   ResourceGroupName = $rgName

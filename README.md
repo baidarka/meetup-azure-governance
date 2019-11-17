@@ -1,14 +1,21 @@
 # Meetup Azure Governance
 
-Handson modules for the Dutch Azure Meetup on Governance.
-Disclaimer: these exercises create several Azure resources and may cost you some money.
+Handson modules for the Dutch Azure Meetup on Governance.  
+*Disclaimer: these exercises will create several Azure resources and may cost you some money.*
 
-## Module 1
+## Module 1 Get started
 
-## Module 2
+Add a demo resource group with storage accounts.
+
+## Module 2 Deploy and assign a policy
 
 
-## Tools
+
+## Module 4 Clean up
+
+Remove the demo resource group and its contents.
+
+## Tools used
 
 Powershell Core with Az module:
 
