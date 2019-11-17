@@ -24,19 +24,23 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
 # Get the id of the demo resource group
 $rg = Get-AzResourceGroup -Name $ResourceGroupName
 
+$polRules = Get-Content "./policy-storage-audit-https/azurepolicy.rules.json"
+
 # note: a policy definition can be added to a management group or a subscription.
 $args = @{
     Name         = "https-traffic-only"
     DisplayName  = "Ensure https traffic only for storage account"
     Description  = "Ensure https traffic only for storage account"
     Subscription = (Get-AzContext).Subscription.Id
-    Policy       = "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Storage/https-traffic-only/azurepolicy.rules.json"
-    Parameter    = "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Storage/https-traffic-only/azurepolicy.parameters.json"
+    Policy       = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-storage-audit-https/azurepolicy.rules.json"
+    Parameter    = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-storage-audit-https/azurepolicy.parameters.json"
+    #Policy       = "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Storage/https-traffic-only/azurepolicy.rules.json"
+    #Parameter    = "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Storage/https-traffic-only/azurepolicy.parameters.json"
     Mode         = "All"
 }
 
 $definition = New-AzPolicyDefinition @args
 $definition
-$assignment = New-AzPolicyAssignment -Name "ensure-https-traffic-only" -Scope $rg  -PolicyDefinition $definition
+$assignment = New-AzPolicyAssignment -Name "monitor-stg-https-traffic-only" -Scope $rg  -PolicyDefinition $definition
 # $assignment
 
