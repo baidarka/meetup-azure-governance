@@ -26,7 +26,8 @@ $rg = Get-AzResourceGroup -Name $ResourceGroupName
 
 $polRules = Get-Content "./policy-storage-audit-https/azurepolicy.rules.json"
 
-# note: a policy definition can be added to a management group or a subscription.
+# Add policy definition ########################################################
+# A policy definition can be added to a management group or a subscription.
 $args = @{
     Name         = "https-traffic-only"
     DisplayName  = "Ensure https traffic only for storage account"
@@ -42,6 +43,7 @@ $args = @{
 $definition = New-AzPolicyDefinition @args
 $definition
 
+# Assign policy definition ####################################################
 $args = @{
     Name                = "monitor-stg-https-traffic-only"
     Scope               = $rg.ResourceId
