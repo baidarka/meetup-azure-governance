@@ -41,6 +41,13 @@ $args = @{
 
 $definition = New-AzPolicyDefinition @args
 $definition
-$assignment = New-AzPolicyAssignment -Name "monitor-stg-https-traffic-only" -Scope $rg  -PolicyDefinition $definition
-# $assignment
+
+$args = @{
+    Name                = "monitor-stg-https-traffic-only"
+    Scope               = $rg.ResourceId
+    PolicyDefinition    = $definition
+}
+
+$assignment = New-AzPolicyAssignment @args
+$assignment
 
