@@ -1,6 +1,7 @@
 # Meetup Azure Governance
 
 Handson modules for the Dutch Azure Meetup on Governance.
+Disclaimer: these exercises create several Azure resources and may cost you some money.
 
 ## Module 1
 
