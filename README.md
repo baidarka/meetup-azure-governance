@@ -1,8 +1,15 @@
 # Meetup Azure Governance
 
-Unfinished work -- Hands-on stuff for Dutch Azure Meetup on Governance.
+Handson modules for the Dutch Azure Meetup on Governance.
+
+## Module 1
+
+## Module 2
+
 
 ## Tools
+
+Powershell Core with Az module:
 
 - [GIT](https://git-scm.com/)
 - [VSCode](https://code.visualstudio.com/)
