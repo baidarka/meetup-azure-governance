@@ -1,6 +1,6 @@
 <#
   .SYNOPSIS
-  Deploy and assign a policy.
+  Trigger a policy evaluation and get the results.
 
   .NOTES
   Coding style 'JustForHandsonLab'.
