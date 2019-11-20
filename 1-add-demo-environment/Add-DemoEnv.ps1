@@ -28,7 +28,7 @@ if (!(Get-AzContext)) {
 Set-AzContext -Subscription $SubscriptionName
 
 # Create a resource group #####################################################
-New-AzResourceGroup -Name $rgName -Location $location -Tag @{ costCenter = "00042" }
+New-AzResourceGroup -Name $ResourceGroupName -Location $location -Tag @{ costCenter = "00042" }
 
 # Create storage account ######################################################
 # ==> This storage account is compliant with our demo policies

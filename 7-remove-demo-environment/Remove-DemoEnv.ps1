@@ -21,7 +21,8 @@ param (
 )
 
 # Variables ###################################################################
-$policyName = "meetup-https-traffic-only"
+$policyAssignmentNames = @("audit-storage-https-traffic-only", "audit-storage-networkAcls-deny")
+$policyDefinitionNames = @("meetup-storage-https-traffic-only", "meetup-storage-networkAcls-deny")
 
 # Login #######################################################################
 if (!(Get-AzContext)) {
@@ -30,7 +31,12 @@ if (!(Get-AzContext)) {
 }
 Set-AzContext -Subscription $SubscriptionName
 
-# Remove resource group (incl policy assignment) ##############################
+# Remove policy assignments ###################################################
+$policyAssignmentNames | 
+  ForEach-Object Get-AzPolicyAssignment -Name $_ |
+    Remove-AzPolicyAssignment -Id $_.ResourceId
+
+# Remove resource group #######################################################
 Write-Verbose -Message ("About to remove resource group '{0}'." -f $rgName)
 Remove-AzResourceGroup -Name $rgName -Force
 
