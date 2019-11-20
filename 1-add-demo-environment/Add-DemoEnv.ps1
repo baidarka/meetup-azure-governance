@@ -1,15 +1,28 @@
+<#
+  .SYNOPSIS
+  Create a resource group with three storage accounts to play with
 
-# Goal: Create three storage accounts to play with
+  .NOTES
+  Coding style 'JustForHandsonLab'.
+#>
+[CmdletBinding()]
+param (
+    [Parameter (Mandatory=$false)]
+    [string]$SubscriptionName = "Visual Studio Enterprise",
 
-$subscriptionName = "Visual Studio Enterprise"
-$rgName = "rg-euw-meetup-demo"
-$location = "westeurope"
+    [Parameter (Mandatory=$false)]
+    [string]$ResourceGroupName = "rg-euw-meetup-demo",
+
+    [Parameter (Mandatory=$false)]
+    [string]$Location = "westeurope"
+)
 
 # Login #######################################################################
 if (!(Get-AzContext)) {
+  Write-Warning "AzContext is null. Please login..."
   Connect-AzAccount
-  Set-AzContext -Subscription $SubscriptionName | Out-Null
 }
+Set-AzContext -Subscription $SubscriptionName
 
 # Create a resource group #####################################################
 New-AzResourceGroup -Name $rgName -Location $location -Tag @{ costCenter = "00042" }
