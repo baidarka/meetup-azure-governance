@@ -40,8 +40,8 @@ $rg = Get-AzResourceGroup -Name $ResourceGroupName
 # A policy definition can be added to a management group or a subscription.
 $args = @{
     Name         = "meetup-storage-https-traffic-only"
-    DisplayName  = "Storage accounts should use encrypted traffic"
-    Description  = "Storage accounts should use encrypted traffic, thus HTTPS only."
+    DisplayName  = "Audit storage accounts that use unencrypted traffic"
+    Description  = "Storage accounts should use encrypted traffic, HTTPS only."
     Subscription = (Get-AzContext).Subscription.Id
     Policy       = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-storage-audit-https/azurepolicy.rules.json"
     Parameter    = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-storage-audit-https/azurepolicy.parameters.json"

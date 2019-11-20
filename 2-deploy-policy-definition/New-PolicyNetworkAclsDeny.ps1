@@ -40,8 +40,8 @@ $rg = Get-AzResourceGroup -Name $ResourceGroupName
 # A policy definition can be added to a management group or a subscription.
 $args = @{
     Name         = "meetup-storage-networkAcls-deny"
-    DisplayName  = "Storage account should not allow access from all networks"
-    Description  = "Storage account should not allow access from all networks, but specify allowed subnets and/or ip ranges."
+    DisplayName  = "Audit Storage accounts that allow access from all networks"
+    Description  = "Storage accounts should specify allowed subnets and/or ip ranges, and should not allow access from all networks."
     Subscription = (Get-AzContext).Subscription.Id
     Policy       = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-networkAcls-deny/azurepolicy.rules.json"
     Parameter    = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-networkAcls-deny/azurepolicy.parameters.json"
