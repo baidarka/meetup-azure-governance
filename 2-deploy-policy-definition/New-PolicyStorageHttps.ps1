@@ -43,8 +43,8 @@ $args = @{
     DisplayName  = "Audit storage accounts that use unencrypted traffic"
     Description  = "Storage accounts should use encrypted traffic, HTTPS only."
     Subscription = (Get-AzContext).Subscription.Id
-    Policy       = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-storage-audit-https/azurepolicy.rules.json"
-    Parameter    = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-storage-audit-https/azurepolicy.parameters.json"
+    Policy       = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-audit-storage-https/azurepolicy.rules.json"
+    Parameter    = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-audit-storage-https/azurepolicy.parameters.json"
     Metadata     = '{ "category" : "Storage" }'
     Mode         = "All"
 }

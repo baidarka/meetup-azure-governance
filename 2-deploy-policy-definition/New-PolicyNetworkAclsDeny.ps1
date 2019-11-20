@@ -43,8 +43,8 @@ $args = @{
     DisplayName  = "Audit Storage accounts that allow access from all networks"
     Description  = "Storage accounts should specify allowed subnets and/or ip ranges, and should not allow access from all networks."
     Subscription = (Get-AzContext).Subscription.Id
-    Policy       = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-networkAcls-deny/azurepolicy.rules.json"
-    Parameter    = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-networkAcls-deny/azurepolicy.parameters.json"
+    Policy       = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-audit-networkAcls-deny/azurepolicy.rules.json"
+    Parameter    = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-audit-networkAcls-deny/azurepolicy.parameters.json"
     Metadata     = '{ "category" : "Storage" }'
     Mode         = "All"
 }
