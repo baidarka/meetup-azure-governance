@@ -2,6 +2,7 @@
 # 
 # To use this file, run these commands:
 # terraform init
+# terraform validate
 # terraform plan -out state.tfplan
 # terraform apply state.tfplan
 
@@ -33,7 +34,7 @@ resource "azurerm_storage_account" "compliant" {
   resource_group_name = "${azurerm_resource_group.meetup.name}"
   location            = "${azurerm_resource_group.meetup.location}"
   account_tier        = "Standard"
-
+  enable_https_traffic_only = true
   account_replication_type = "LRS"
 }
 
@@ -42,7 +43,7 @@ resource "azurerm_storage_account" "https" {
   resource_group_name = "${azurerm_resource_group.meetup.name}"
   location            = "${azurerm_resource_group.meetup.location}"
   account_tier        = "Standard"
-
+  enable_https_traffic_only = false
   account_replication_type = "LRS"
 }
 
@@ -51,6 +52,6 @@ resource "azurerm_storage_account" "network" {
   resource_group_name = "${azurerm_resource_group.meetup.name}"
   location            = "${azurerm_resource_group.meetup.location}"
   account_tier        = "Standard"
-
+  enable_https_traffic_only = true
   account_replication_type = "LRS"
 }
