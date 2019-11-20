@@ -7,7 +7,7 @@
 			},
 			{
 				"not": {
-					"field": "Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly",
+					"field": "supportsHttpsTrafficOnly",
 					"equals": "true"
 				}
 			}

@@ -39,14 +39,14 @@ $accessTier = "Hot"
 $randomId = Get-Random -Minimum 10000 -Maximum 99999
 
 $args = @{
-  ResourceGroupName = $rgName
-  Name              = ("stdemocompliant{0}" -f $randomId)
-  Location          = $location
-  SkuName           = $sku
-  Kind              = $kind
-  AccessTier        = $accessTier
-  NetworkRuleSet    = (@{bypass="Logging,Metrics"; defaultAction="deny"}) # add ipRules and/or virtualNetworkRules
-  EnableHttpsTrafficOnly = $true
+  ResourceGroupName       = $ResourceGroupName
+  Name                    = ("stdemocompliant{0}" -f $randomId)
+  Location                = $location
+  SkuName                 = $sku
+  Kind                    = $kind
+  AccessTier              = $accessTier
+  NetworkRuleSet          = (@{bypass="Logging,Metrics"; defaultAction="deny"}) # add ipRules and/or virtualNetworkRules
+  EnableHttpsTrafficOnly  = $true
 }
 
 New-AzStorageAccount @args
@@ -54,14 +54,14 @@ New-AzStorageAccount @args
 # Create storage account ######################################################
 # ==> This storage account allows http traffic
 $args = @{
-  ResourceGroupName = $rgName
-  Name              = ("stdemohttps{0}" -f $randomId)
-  Location          = $location
-  SkuName           = $sku
-  Kind              = $kind
-  AccessTier        = $accessTier
-  NetworkRuleSet    = (@{bypass="Logging,Metrics"; defaultAction="deny"}) # add ipRules and/or virtualNetworkRules
-  EnableHttpsTrafficOnly = $false
+  ResourceGroupName       = $ResourceGroupName
+  Name                    = ("stdemohttps{0}" -f $randomId)
+  Location                = $location
+  SkuName                 = $sku
+  Kind                    = $kind
+  AccessTier              = $accessTier
+  NetworkRuleSet          = (@{bypass="Logging,Metrics"; defaultAction="deny"}) # add ipRules and/or virtualNetworkRules
+  EnableHttpsTrafficOnly  = $false
 }
 
 New-AzStorageAccount @args
@@ -69,16 +69,16 @@ New-AzStorageAccount @args
 # Create storage account ######################################################
 # ==> this storage account does not use a network rule set
 $args = @{
-  ResourceGroupName = $rgName
-  Name              = ("stdemonetwork{0}" -f $randomId)
-  Location          = $location
-  SkuName           = $sku
-  Kind              = $kind
-  AccessTier        = $accessTier
-  EnableHttpsTrafficOnly = $true
+  ResourceGroupName       = $ResourceGroupName
+  Name                    = ("stdemonetwork{0}" -f $randomId)
+  Location                = $location
+  SkuName                 = $sku
+  Kind                    = $kind
+  AccessTier              = $accessTier
+  EnableHttpsTrafficOnly  = $true
 }
 
 New-AzStorageAccount @args
 
 # List your storage accounts
-Get-AzStorageAccount -ResourceGroupName $rgName
+Get-AzStorageAccount -ResourceGroupName $ResourceGroupName | Select-Object StorageAccountName
