@@ -55,7 +55,7 @@ Write-Verbose -Message ("Location uri: '{0}'." -f $locationUri)
 # Wait for the eval to complete ###############################################
 $idx = 1
 $maxRetries = 30
-$sleep = 10
+$sleep = 15
 while ((($response = Invoke-WebRequest -Uri $locationUri -Method GET -Headers $headers).StatusCode -ne 200) `
         -AND ($idx -lt $maxRetries)) {
     Write-Verbose ("Request {0} returned status code {1}, retrying..." -f $idx, $response.StatusCode)
@@ -69,9 +69,8 @@ if ($response.StatusCode -ne 200) {
     exit 1
 }
 Write-Output "Policy evaluation completed!"
-$response
 
 # Get the policy compliance summary ###########################################
-Get-AzPolicyState -SubscriptionId $subId -ResourceGroupName $ResourceGroupName
+Get-AzPolicyState -SubscriptionId $subId -ResourceGroupName $ResourceGroupName | where { $_.IsCompliant -eq $false } 
 
 Get-AzPolicyStateSummary -SubscriptionId $subId -ResourceGroupName $ResourceGroupName
