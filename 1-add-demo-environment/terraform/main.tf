@@ -13,8 +13,14 @@ provider "azurerm" {
 
 ####################################################################
 ## Resources
+
+resource "random_integer" "st_num" {
+  min = 10000
+  max = 99999
+}
+
 resource "azurerm_resource_group" "meetup" {
-  name     = "rg-euw-meetup-dev-001"
+  name     = "rg-euw-meetup-demo"
   location = "West Europe"
   tags = {
     costCenter  = "42-demo",
@@ -23,7 +29,7 @@ resource "azurerm_resource_group" "meetup" {
 }
 
 resource "azurerm_storage_account" "compliant" {
-  name                = "stgdemocompliant"
+  name                = "stdemocompliant${random_integer.st_num}"
   resource_group_name = "${azurerm_resource_group.meetup.name}"
   location            = "${azurerm_resource_group.meetup.location}"
   account_tier        = "Standard"
@@ -32,7 +38,7 @@ resource "azurerm_storage_account" "compliant" {
 }
 
 resource "azurerm_storage_account" "https" {
-  name                = "stgdemohttps"
+  name                = "stdemohttps${random_integer.st_num}"
   resource_group_name = "${azurerm_resource_group.meetup.name}"
   location            = "${azurerm_resource_group.meetup.location}"
   account_tier        = "Standard"
@@ -41,7 +47,7 @@ resource "azurerm_storage_account" "https" {
 }
 
 resource "azurerm_storage_account" "network" {
-  name                = "stgdemonetwork"
+  name                = "stdemonetwork${random_integer.st_num}"
   resource_group_name = "${azurerm_resource_group.meetup.name}"
   location            = "${azurerm_resource_group.meetup.location}"
   account_tier        = "Standard"
