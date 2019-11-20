@@ -39,12 +39,12 @@ $rg = Get-AzResourceGroup -Name $ResourceGroupName
 # Add policy definition ########################################################
 # A policy definition can be added to a management group or a subscription.
 $args = @{
-    Name         = "meetup-storage-https-traffic-only"
-    DisplayName  = "Storage accounts should use encrypted traffic"
-    Description  = "Storage accounts should use encrypted traffic, thus HTTPS only."
+    Name         = "meetup-storage-networkAcls-deny"
+    DisplayName  = "Storage account should not allow access from all networks"
+    Description  = "Storage account should not allow access from all networks, but specify allowed subnets and/or ip ranges."
     Subscription = (Get-AzContext).Subscription.Id
-    Policy       = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-storage-audit-https/azurepolicy.rules.json"
-    Parameter    = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-storage-audit-https/azurepolicy.parameters.json"
+    Policy       = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-networkAcls-deny/azurepolicy.rules.json"
+    Parameter    = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-networkAcls-deny/azurepolicy.parameters.json"
     Metadata     = '{ "category" : "Storage" }'
     Mode         = "All"
 }
@@ -54,7 +54,7 @@ $definition
 
 # Assign policy definition to the resource group ##############################
 $args = @{
-    Name                = "audit-storage-https-traffic-only"
+    Name                = "audit-storage-networkAcls-deny"
     Scope               = $rg.ResourceId
     PolicyDefinition    = $definition
 }
