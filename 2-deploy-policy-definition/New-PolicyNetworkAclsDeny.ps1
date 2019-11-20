@@ -4,6 +4,7 @@
 
   .NOTES
   Coding style 'JustForHandsonLab'.
+  The policy deployed here appears to be a dupe of 'Audit unrestricted network access to storage accounts'
 
   .AUTHOR
   BernardB  https://github.com/baidarka/meetup-azure-governance
@@ -40,7 +41,7 @@ $rg = Get-AzResourceGroup -Name $ResourceGroupName
 # A policy definition can be added to a management group or a subscription.
 $args = @{
     Name         = "meetup-storage-networkAcls-deny"
-    DisplayName  = "Audit Storage accounts that allow access from all networks"
+    DisplayName  = "Audit storage accounts that allow access from all networks"
     Description  = "Storage accounts should specify allowed subnets and/or ip ranges, and should not allow access from all networks."
     Subscription = (Get-AzContext).Subscription.Id
     Policy       = "https://raw.githubusercontent.com/baidarka/meetup-azure-governance/master/2-deploy-policy-definition/policy-audit-networkAcls-deny/azurepolicy.rules.json"

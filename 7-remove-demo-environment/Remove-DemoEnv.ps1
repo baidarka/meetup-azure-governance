@@ -32,8 +32,9 @@ if (!(Get-AzContext)) {
 Set-AzContext -Subscription $SubscriptionName
 
 # Remove policy assignments ###################################################
+$rg = Get-AzResourceGroup -Name $ResourceGroupName
 foreach ($policyAssignmentName in $policyAssignmentNames) {
-  $policyAssignment = Get-AzPolicyAssignment -Name $policyAssignmentName
+  $policyAssignment = Get-AzPolicyAssignment -Name $policyAssignmentName -Scope $rg.ResourceId
   if ($null -ne $policyAssignment) {
     Remove-AzPolicyAssignment -Id $policyAssignment.ResourceId
   }
