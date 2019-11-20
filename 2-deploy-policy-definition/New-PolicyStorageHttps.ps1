@@ -4,6 +4,9 @@
 
   .NOTES
   Coding style 'JustForHandsonLab'.
+
+  .AUTHOR
+  BernardB
 #>
 [CmdletBinding()]
 param (
