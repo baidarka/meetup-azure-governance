@@ -6,7 +6,7 @@
   Coding style 'JustForHandsonLab'.
 
   .AUTHOR
-  BernardB
+  BernardB  https://github.com/baidarka/meetup-azure-governance
 #>
 [CmdletBinding()]
 param (

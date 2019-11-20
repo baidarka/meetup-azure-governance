@@ -6,7 +6,7 @@
   Coding style 'JustForHandsonLab'.
 
   .AUTHOR
-  BernardB
+  BernardB  https://github.com/baidarka/meetup-azure-governance
 #>
 [CmdletBinding()]
 param (
@@ -40,7 +40,7 @@ $randomId = Get-Random -Minimum 10000 -Maximum 99999
 
 $args = @{
   ResourceGroupName = $rgName
-  Name              = ("stgdemocompliant{0}" -f $randomId)
+  Name              = ("stdemocompliant{0}" -f $randomId)
   Location          = $location
   SkuName           = $sku
   Kind              = $kind
@@ -55,7 +55,7 @@ New-AzStorageAccount @args
 # ==> This storage account allows http traffic
 $args = @{
   ResourceGroupName = $rgName
-  Name              = ("stgdemohttps{0}" -f $randomId)
+  Name              = ("stdemohttps{0}" -f $randomId)
   Location          = $location
   SkuName           = $sku
   Kind              = $kind
@@ -70,7 +70,7 @@ New-AzStorageAccount @args
 # ==> this storage account does not use a network rule set
 $args = @{
   ResourceGroupName = $rgName
-  Name              = ("stgdemonetwork{0}" -f $randomId)
+  Name              = ("stdemonetwork{0}" -f $randomId)
   Location          = $location
   SkuName           = $sku
   Kind              = $kind
