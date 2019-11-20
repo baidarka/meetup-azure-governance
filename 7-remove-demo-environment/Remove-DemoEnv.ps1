@@ -32,17 +32,21 @@ if (!(Get-AzContext)) {
 Set-AzContext -Subscription $SubscriptionName
 
 # Remove policy assignments ###################################################
-$policyAssignmentNames | `
-  ForEach-Object Get-AzPolicyAssignment -Name $_ | `
-    Remove-AzPolicyAssignment -Id $_.ResourceId
+foreach ($policyAssignmentName in $policyAssignmentNames) {
+  $policyAssignment = Get-AzPolicyAssignment -Name $policyAssignmentName
+  if ($null -ne $policyAssignment) {
+    Remove-AzPolicyAssignment -Id $policyAssignment.ResourceId
+  }
+}
 
 # Remove resource group #######################################################
 Write-Verbose -Message ("About to remove resource group '{0}'." -f $ResourceGroupName)
 Remove-AzResourceGroup -Name $ResourceGroupName -Force
 
 # Remove policy definition ####################################################
-$policyDefinition = Get-AzPolicyDefinition -Name $policyName
-Remove-AzPolicyDefinition -Id $policyDefinition.ResourceId -Force
-$policyDefinitionNames | `
-  ForEach-Object Get-AzPolicyDefinition -Name $_ | `
-    Remove-AzPolicyDefinition -Id $_.ResourceId
+foreach ($policyDefinitionName in $policyDefinitionNames) {
+  $policyDefinition = Get-AzPolicyDefinition -Name $policyDefinitionName
+  if ($null -ne $policyDefinition) {
+    Remove-AzPolicyDefinition -Id $policyDefinition.ResourceId -Force
+  }
+}
