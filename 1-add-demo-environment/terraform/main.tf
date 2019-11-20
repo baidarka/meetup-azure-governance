@@ -2,8 +2,8 @@
 # 
 # To use this file, run these commands:
 # terraform init
-# terraform plan
-# terraform apply
+# terraform plan -out state.tfplan
+# terraform apply state.tfplan
 
 ####################################################################
 ## Providers
