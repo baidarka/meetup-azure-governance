@@ -18,6 +18,9 @@
     .PARAMETER ServicePrincipalDisplayName
     Display name of the Service Principal.
 
+    .NOTES
+    Coding style 'JustForHandsonLab'.
+
     .AUTHOR
     BernardB https://github.com/baidarka
  
@@ -28,16 +31,13 @@
 
 [CmdletBinding()]
 param(
-    [Parameter (Mandatory=$true, HelpMessage='Subscription name or id.')]
-    [ValidateNotNullorEmpty()]
-    [String]$Subscription,
+    [Parameter (Mandatory=$false, HelpMessage='Subscription name or id.')]
+    [String]$Subscription = "Visual Studio Enterprise",
 
     [Parameter (Mandatory=$false, HelpMessage='Name of the resource group to which the SP will be assigned Contributor to.')]
-    [ValidateNotNullorEmpty()]
-    [String]$ResourceGroupName,
+    [String]$ResourceGroupName = "rg-euw-meetup-demo",
 
     [Parameter (Mandatory=$false, HelpMessage='Display name of the Service Principal. Defaults to Ops-[subscrName]-SP.')]
-    [ValidateNotNullorEmpty()]
     [String]$ServicePrincipalDisplayName
 )
 
@@ -56,11 +56,11 @@ begin {
         Write-Warning "AzContext is null. Please login..."
         Connect-AzAccount
     }
-    Set-AzContext -Subscription $SubscriptionName
+    Set-AzContext -Subscription $Subscription
 
     $subName = (((Get-AzContext).Subscription.Name).Trim()) -replace '\s',''  # subscription name without spaces
     if ([string]::IsNullOrWhiteSpace($ServicePrincipalDisplayName)) {
-        $ServicePrincipalDisplayName = ("Ops-{0}-SP" -f $subName)
+        $ServicePrincipalDisplayName = ("Meetup-{0}-SP" -f $subName)
     }
 
     # Define the scope for the new SP; using an explicit scope will implicitly add the role assignment in New-AzADServicePrincipal
@@ -77,16 +77,16 @@ begin {
 
 process {
     # Ensure that SP properties can be stored in a file
-    $fileName = "ServicePrincipal_$($ServicePrincipalDisplayName).txt"
-    $filePath = [System.IO.Path]::Combine([environment]::GetFolderPath("mydocuments"), $fileName)
-    Write-Verbose ("SP properties will be stored in file '{0}'" -f $filePath)
+    $fileName = "$($ServicePrincipalDisplayName).key"
+    $filePath = [System.IO.Path]::Combine($PSScriptRoot, $fileName)
+    Write-Output ("SP properties will be stored in file '{0}'" -f $filePath)
     Set-Content -Path $filePath -Value ("Display name     : '{0}'" -f $ServicePrincipalDisplayName)
 
     # Store useful Terraform variables in a script file
-    $envFileName = "variables_$($subName).ps1"
-    $envFilePath = [System.IO.Path]::Combine([environment]::GetFolderPath("mydocuments"), $envFileName)
-    Write-Verbose ("Terraform variables will be stored in file '{0}'" -f $envFilePath)
-    Set-Content -Path $envFilePath -Value ("# Subscription '{0}'" -f ((Get-AzContext).Subscription.Name))
+    # $envFileName = "variables_$($subName).ps1"
+    # $envFilePath = [System.IO.Path]::Combine([environment]::GetFolderPath("mydocuments"), $envFileName)
+    # Write-Verbose ("Terraform variables will be stored in file '{0}'" -f $envFilePath)
+    # Set-Content -Path $envFilePath -Value ("# Subscription '{0}'" -f ((Get-AzContext).Subscription.Name))
 
     # Create a new SP
     $sp = New-AzADServicePrincipal -DisplayName $ServicePrincipalDisplayName -Scope $scope
@@ -105,10 +105,10 @@ process {
     Add-Content -Path $filePath -Value ("Role             : '{0}'" -f $role)
 
     # Add Terraform variables to file
-    Add-Content -Path $envFilePath -Value ("`$Env:ARM_SUBSCRIPTION_ID = '{0}'" -f (Get-AzContext).Subscription.Id)
-    Add-Content -Path $envFilePath -Value ("`$Env:ARM_TENANT_ID = '{0}'" -f (Get-AzContext).Tenant.Id)
-    Add-Content -Path $envFilePath -Value ("`$Env:ARM_CLIENT_ID = '{0}'" -f $sp.ApplicationId)
-    Add-Content -Path $envFilePath -Value ("`$Env:ARM_CLIENT_SECRET = '{0}'" -f $unsecureSecret)
+    # Add-Content -Path $envFilePath -Value ("`$Env:ARM_SUBSCRIPTION_ID = '{0}'" -f (Get-AzContext).Subscription.Id)
+    # Add-Content -Path $envFilePath -Value ("`$Env:ARM_TENANT_ID = '{0}'" -f (Get-AzContext).Tenant.Id)
+    # Add-Content -Path $envFilePath -Value ("`$Env:ARM_CLIENT_ID = '{0}'" -f $sp.ApplicationId)
+    # Add-Content -Path $envFilePath -Value ("`$Env:ARM_CLIENT_SECRET = '{0}'" -f $unsecureSecret)
 }
 end {
     Write-Verbose "End"
