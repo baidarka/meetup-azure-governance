@@ -16,3 +16,10 @@
 - Give a 'Name' and a 'Definition location' (select your Management Group or Subscription)
 - Publish your Blueprint
 - Assign your Blueprint
+
+## Import and export a Blueprint using PowerShell
+
+<https://docs.microsoft.com/en-us/azure/governance/blueprints/how-to/import-export-ps>
+
+Read more...
+<https://github.com/Azure/azure-blueprints/blob/master/README.md>
