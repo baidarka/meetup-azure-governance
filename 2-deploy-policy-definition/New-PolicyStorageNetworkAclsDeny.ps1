@@ -55,7 +55,7 @@ $definition
 
 # Assign policy definition to the resource group ##############################
 $args = @{
-    Name                = "audit-storage-networkAcls-deny"
+    Name                = "Meetup audit storage networkAcls deny"
     Scope               = $rg.ResourceId
     PolicyDefinition    = $definition
 }

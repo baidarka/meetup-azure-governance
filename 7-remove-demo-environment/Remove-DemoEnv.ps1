@@ -21,7 +21,7 @@ param (
 )
 
 # Variables ###################################################################
-$policyAssignmentNames = @("audit-storage-https-traffic-only", "audit-storage-networkAcls-deny")
+$policyAssignmentNames = @("Meetup audit storage https traffic only", "Meetup audit storage networkAcls deny")
 $policyDefinitionNames = @("meetup-storage-https-traffic-only", "meetup-storage-networkAcls-deny")
 
 # Login #######################################################################

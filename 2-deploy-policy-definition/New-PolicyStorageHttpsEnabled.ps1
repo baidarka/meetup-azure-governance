@@ -54,7 +54,7 @@ $definition
 
 # Assign policy definition to the resource group ##############################
 $args = @{
-    Name                = "audit-storage-https-traffic-only"
+    Name                = "Meetup audit storage https traffic only"
     Scope               = $rg.ResourceId
     PolicyDefinition    = $definition
 }

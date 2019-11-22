@@ -20,6 +20,9 @@ param (
     [string]$Location = "westeurope"
 )
 
+# HACK - force some output; should use '-v' instead! ##########################
+$VerbosePreference = "continue"
+
 # Login #######################################################################
 if (!(Get-AzContext)) {
     Write-Warning "AzContext is null. Please login..."
@@ -29,7 +32,7 @@ Set-AzContext -Subscription $SubscriptionName
 
 $subId = (Get-AzSubscription -SubscriptionName $SubscriptionName).Id
 
-# URI for Subscription and resource group.
+# URI for Subscription and resource group #####################################
 $uri = ("https://management.azure.com/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview"-f $subId, $ResourceGroupName)
 
 $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
@@ -66,9 +69,13 @@ while ((($response = Invoke-WebRequest -Uri $locationUri -Method GET -Headers $h
 if ($response.StatusCode -ne 200) {
     $reponse
     Write-Error "Response statuscode not 200 and retries exhausted."
-    exit 1
+    
+    # demo script, do not exit and use 'else' instead; eeks
+    #exit 1
+
+} else {
+    Write-Output "Policy evaluation completed!"
 }
-Write-Output "Policy evaluation completed!"
 
 # Get the policy compliance summary ###########################################
 Get-AzPolicyState -SubscriptionId $subId -ResourceGroupName $ResourceGroupName | where { $_.IsCompliant -eq $false } 
