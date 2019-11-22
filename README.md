@@ -1,23 +1,31 @@
 # Meetup Azure Governance
 
-Handson modules for the Dutch Azure Meetup on Governance.  
+Hands-on modules for the Dutch Azure Meetup on Governance.  
 *Disclaimer: these exercises will create several Azure resources and may cost you some money.*
 
-## Module 1 Get started
+These modules are based on PowerShell (Az module). See 'Tools' below.
+
+## Module 1 - Getting started
 
 Add a demo resource group with storage accounts.
 
-## Module 2 Deploy and assign a policy
+## Module 2 - Deploy and assign two policies
 
+## Module 3 - The VSCode Policy Extension
 
+## Module 4 - Trigger a policy evaluation
 
-## Module 4 Clean up
+## Module 5 - Policies and remediation
 
-Remove the demo resource group and its contents.
+(skip)
 
-## Tools used
+## Module 6 Blueprints
 
-Powershell Core with Az module:
+SWIFT CSP
+
+## Module 7 Clean-up
+
+## Tools
 
 - [GIT](https://git-scm.com/)
 - [VSCode](https://code.visualstudio.com/)
