@@ -10,17 +10,17 @@ These modules are based on PowerShell (Az module). See 'Tools' below.
 1. Getting started  
    Add a demo resource group with storage accounts.
 
-2. [Deploy and assign policies](2-deploy-policy-definition/README.md)
+2. [Deploy and assign policies](2-deploy-policy-definition/)
 
-3. [VSCode Policy Extension](3-VSCode-policy-extension/README.md)
+3. [VSCode Policy Extension](3-VSCode-policy-extension/)
 
-4. [Trigger a policy evaluation](4-trigger-policy-evaluation/README.md)  
+4. [Trigger a policy evaluation](4-trigger-policy-evaluation/)  
 
    Trigger an evaluation and get compliance data.
 
 5. (skip) Policies and remediation
 
-6. [Explore Blueprints](6-explore-blueprint/README.md)
+6. [Explore Blueprints](6-explore-blueprint/)
 
    Cloud Adoption Framework (CAF)
    SWIFT CSP
