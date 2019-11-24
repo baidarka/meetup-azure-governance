@@ -5,28 +5,27 @@ Hands-on modules for the Dutch Azure Meetup on Governance.
 
 These modules are based on PowerShell (Az module). See 'Tools' below.
 
-## Module 1 - Getting started
+## Modules
 
-Add a demo resource group with storage accounts.
+1. Getting started  
+   Add a demo resource group with storage accounts.
 
-## Module 2 - [Deploy and assign policies](2-deploy-policy-definition/README.md)
+2. [Deploy and assign policies](2-deploy-policy-definition/README.md)
 
-## Module 3 - [VSCode Policy Extension](3-VSCode-policy-extension/README.md)
+3. [VSCode Policy Extension](3-VSCode-policy-extension/README.md)
 
-## Module 4 - [Trigger a policy evaluation](4-trigger-policy-evaluation/README.md)
+4. [Trigger a policy evaluation](4-trigger-policy-evaluation/README.md)  
 
-Trigger an evaluation and get compliance data.
+   Trigger an evaluation and get compliance data.
 
-## Module 5 - Policies and remediation
+5. (skip) Policies and remediation
 
-(skip)
+6. [Explore Blueprints](6-explore-blueprint/README.md)
 
-## Module 6 - [Explore Blueprints](6-explore-blueprint/README.md)
+   Cloud Adoption Framework (CAF)
+   SWIFT CSP
 
-Cloud Adoption Framework (CAF)
-SWIFT CSP
-
-## Module 7 Clean-up
+7. Clean-up
 
 ## Tools
 
