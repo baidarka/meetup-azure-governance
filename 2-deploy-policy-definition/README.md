@@ -1,7 +1,7 @@
 # Deploy a policy definition, and assign the policy
 
-Deploy two policy definition to your subscription. 
-Use scripts 'New-PolicyStorageHttpsEnabled.ps1' and 'New-PolicyStorageNetworkAclsDeny.ps1'.
+Deploy two policy definition to your subscription.
+Use scripts 'New-PolicyStorageHttpsEnabled.ps1' and 'New-PolicyStorageNetworkAclsDeny.ps1':
 
 - Review the scripts
 - Run the scripts
