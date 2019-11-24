@@ -1,25 +1,31 @@
 # Deloy a Blueprint
 
-## (optional) Add a Management Group if you do not have one
-
-- Open the Azure portal
-- Search for 'Management Groups'
-- Add Management Group (enter display name and a GUID)
-- Open your Management Group, select 'Add subscription'
-
 ## Add a Blueprint
 
-- (register resource provider 'Microsoft/Blueprint' for your target subscription)
+In the Azure Portal:  
+
 - Search for 'Blueprints'
 - Click 'Create'
-- Select CAF Blueprint
+- Select CAF Blueprint (Cloud Adoption Framework)
 - Give a 'Name' and a 'Definition location' (select your Management Group or Subscription)
+- (optional: Customize you Blueprint)
 - Publish your Blueprint
-- Assign your Blueprint
+- (optional: Assign your Blueprint to your subscription)
 
-## Import and export a Blueprint using PowerShell
+## Export a Blueprint
 
-<https://docs.microsoft.com/en-us/azure/governance/blueprints/how-to/import-export-ps>
+- (register resource provider 'Microsoft/Blueprint' for your target subscription)
+- Get the Azure Powershell Blueprint module if needed: `Install-Module -Name Az.Blueprint`
+- Get the names of your Blueprints: `get-azblueprint | select name`  
+- Get Blueprint object, e.g.: `$bp = get-azblueprint -managementgroupid [yourMgmtGrpId] -name [yourBpName]`
+- Get Blueprint artifacts, e.g.: `get-azblueprintartifact`
+- Export Blueprint artifacts `export-azblueprintwithartifact -Blueprint $bp -OutputPath c:/temp/bp`  
+  Review the files in the resulting folder structure
+- Add your Blueprint to source control  
+- Adapt to your companies requirements / policy-mapping / taste; import and assign
 
-Read more...
+
+Read more...  
+<https://docs.microsoft.com/en-us/azure/governance/blueprints/>  
+<https://docs.microsoft.com/en-us/azure/governance/blueprints/samples/caf-foundation/>  
 <https://github.com/Azure/azure-blueprints/blob/master/README.md>
