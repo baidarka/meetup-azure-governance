@@ -19,8 +19,9 @@ Add a demo resource group with storage accounts.
 
 (skip)
 
-## Module 6 Blueprints
+## Module 6 - Explore Blueprints
 
+CAF
 SWIFT CSP
 
 ## Module 7 Clean-up
