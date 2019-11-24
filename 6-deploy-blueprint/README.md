@@ -1,4 +1,7 @@
-# Deloy a Blueprint
+# Explore Blueprints
+
+*Note: deploying a blueprint may create resources, and interfere with your existing subscription setup.*
+For exploration: use an empty subscription.
 
 ## Add a Blueprint
 
