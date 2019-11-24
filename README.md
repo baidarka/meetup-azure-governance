@@ -23,7 +23,6 @@ These modules are based on PowerShell (Az module). See 'Tools' below.
 6. [Explore Blueprints](6-explore-blueprint/)
 
    Cloud Adoption Framework (CAF)
-   SWIFT CSP
 
 7. Clean-up
 
