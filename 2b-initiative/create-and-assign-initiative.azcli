@@ -1,0 +1,6 @@
+az login
+
+az policy set-definition create
+az policy set-definition update
+
+# assign
