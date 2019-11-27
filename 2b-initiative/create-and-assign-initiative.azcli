@@ -6,16 +6,27 @@ az account set --subscription "Visual Studio Enterprise"
 az policy assignment list --resource-group "rg-euw-meetup-demo" -o table
 
 RG="rg-euw-meetup-demo"
-az policy assignment delete --name 'Meetup audit storage https traffic only' --resource-group $RG
-az policy assignment delete --name 'Meetup audit storage networkAcls deny' --resource-group $RG
+
+# leave the previous assignment as is; that just happens to be easier for this hands-on lab, for now
+#az policy assignment delete --name 'Meetup audit storage https traffic only' --resource-group $RG
+#az policy assignment delete --name 'Meetup audit storage networkAcls deny' --resource-group $RG
 
 # create an Initiative (using an existing policy definition)
 az policy set-definition create
 
-SUBSCR_ID=$(az account show --query 'id')
-az policy set-definition create -n "Meetup Compliant Storage" --subscription $SUBSCR_ID --definitions '[{ "policyDefinitionId": "/subscriptions/$SUBSCR_ID/providers/Microsoft.Authorization/policyDefinitions/meetup-storage-https-traffic-only" }]'
+SUBSCR_ID=$(az account show --query 'id' | sed -e 's/^"//' -e 's/"$//')
+POL_DEF_NAME="meetup-storage-https-traffic-only"
+POL_DEF="[ { \"policyDefinitionId\" : \"/subscriptions/$SUBSCR_ID/providers/Microsoft.Authorization/policyDefinitions/$POL_DEF_NAME\" } ]"
+
+az policy set-definition create -n "Meetup Compliant Storage" --subscription $SUBSCR_ID --definitions "$POL_DEF"
 
 # update the Initiative
-az policy set-definition update
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# NOTE this command REPLACES the previous policy definition
+# in order to ADD a policy definition, make sure to include the existing policy definition set
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+POL_DEF_NAME="meetup-storage-networkAcls-deny"
+POL_DEF="[ { \"policyDefinitionId\" : \"/subscriptions/$SUBSCR_ID/providers/Microsoft.Authorization/policyDefinitions/$POL_DEF_NAME\" } ]"
+az policy set-definition update --definition "$POL_DEF" -n "Meetup Compliant Storage"
 
-# assign
+# assign the Initiative
