@@ -1,7 +1,21 @@
-
+# login and set subscription
 az login
+az account set --subscription "Visual Studio Enterprise"
 
+# remove assignments if exist
+az policy assignment list --resource-group "rg-euw-meetup-demo" -o table
+
+RG="rg-euw-meetup-demo"
+az policy assignment delete --name 'Meetup audit storage https traffic only' --resource-group $RG
+az policy assignment delete --name 'Meetup audit storage networkAcls deny' --resource-group $RG
+
+# create an Initiative (using an existing policy definition)
 az policy set-definition create
+
+SUBSCR_ID=$(az account show --query 'id')
+az policy set-definition create -n "Meetup Compliant Storage" --subscription $SUBSCR_ID --definitions '[{ "policyDefinitionId": "/subscriptions/$SUBSCR_ID/providers/Microsoft.Authorization/policyDefinitions/meetup-storage-https-traffic-only" }]'
+
+# update the Initiative
 az policy set-definition update
 
 # assign
