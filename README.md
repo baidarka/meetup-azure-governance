@@ -24,11 +24,12 @@ Policies may include remediation tasks. While remediation is a powerful concept,
 
 When setting up an environment or subscription, you may want to include your policies in a Blueprint. [Explore a blueprint](6-explore-blueprint/) to get inspired!
 
-Lastly, take advantage of the Azure DevOps release Gate 'Policy' to ensure releasing to a compliant environment.
+Lastly, take advantage of the Azure DevOps pre-deployment condition gate ['Check Policy Compliance'](7-AzureDevOps-gate/)
+to ensure releasing to a compliant environment.
 
 ## Clean up
 
-When done: [tidy up](7-remove-demo-environment/).
+When done: [tidy up](8-remove-demo-environment/).
 
 ## Tools
 
