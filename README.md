@@ -3,8 +3,8 @@
 Hands-on modules for the Dutch Azure Meetup on Governance.  
 *Disclaimer: these exercises will create several Azure resources and may cost you some money.*
 
-These modules are based on PowerShell (Az module). See 'Tools' below.  
-(You may also want to look into azure-cli, and the [ArmClient](https://www.github.com/projectkudu/ARMClient).)
+These modules are based on [Powershell](https://github.com/PowerShell/PowerShell), with
+[Az module](https://docs.microsoft.com/en-us/powershell/azure/new-azureps-module-az?view=azps-3.0.0). See 'Tools' below.
 
 ## Getting started
 
@@ -40,6 +40,8 @@ When done: [tidy up](7-remove-demo-environment/).
   - Powershell
 - [Powershell](https://github.com/PowerShell/PowerShell)
   - [Powershell Az module](https://docs.microsoft.com/en-us/powershell/azure/new-azureps-module-az?view=azps-3.0.0)
+
+Optionally, you may also want to look into [azure-cli](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest), and the [ArmClient](https://www.github.com/projectkudu/ARMClient).
 
 ## Contributors
 
