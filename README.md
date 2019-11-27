@@ -12,7 +12,7 @@ Conjure up a resource group with some storage accounts: [Add demo environment](1
 
 ## Module story
 
-To implement your company's Cloud policy, you map each requirement to a control on an Azure resource. This typically leads to   [deployment and assignment of policies](2-deploy-policy-definition/). If you want to deploy a _complete_ policy definition (combination of metadata, rule and parameter), then have a look at the ARMClient.
+To implement your company's Cloud policy, you map each requirement to a control on an Azure resource. This typically leads to   [deployment and assignment of policies](2-deploy-policy-definition/).
 
 Microsoft recommends to bundle policies in 'policy sets' called 'Initiatives'. Unlike Powershell, the Azure CLI allows to **update** Initiatives.
 
