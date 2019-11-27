@@ -14,7 +14,7 @@ Conjure up a resource group with some storage accounts: [Add demo environment](1
 
 To implement your company's Cloud policy, you map each requirement to a control on an Azure resource. This typically leads to   [deployment and assignment of policies](2-deploy-policy-definition/).
 
-Microsoft recommends to bundle policies in 'policy sets' called 'Initiatives'. Unlike Powershell, the Azure CLI allows to **update** Initiatives.
+Microsoft recommends to bundle policies in 'policy sets' called 'Initiatives'. Unlike Powershell, the Azure CLI allows to **update** Initiatives. Optionally, take a look at [initiatives](2b-initiative).
 
 When creating custom policies the [VSCode Policy Extension](3-VSCode-policy-extension/) proves helpful.  
 
