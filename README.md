@@ -8,7 +8,7 @@ These modules are based on [Powershell](https://github.com/PowerShell/PowerShell
 
 ## Getting started
 
-Conjure up a resource group with some storage accounts: [1-add-demo-environment/README.md].
+Conjure up a resource group with some storage accounts: [1-add-demo-environment/](1-add-demo-environment/).
 
 ## Module story
 
