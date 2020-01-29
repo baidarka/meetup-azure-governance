@@ -46,4 +46,4 @@ Optionally, you may also want to look into [azure-cli](https://docs.microsoft.co
 
 ## Contributors
 
-Thanks to Bas Kortleven (Wolf & Cherry) and Bram Kleverlaan (OahPat) for inspiration!s
+Thanks to Bas Kortleven (Wolf & Cherry) and Bram Kleverlaan (OahPat) for inspiration!
