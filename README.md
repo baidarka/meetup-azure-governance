@@ -44,6 +44,6 @@ When done: [tidy up](8-remove-demo-environment/).
 
 Optionally, you may also want to look into [azure-cli](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest), and the [ArmClient](https://www.github.com/projectkudu/ARMClient).
 
-## Contributors
+## Acknowledgement
 
 Thanks to Bas Kortleven (Wolf & Cherry) and Bram Kleverlaan (OahPat) for inspiration!
